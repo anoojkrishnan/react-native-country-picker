@@ -103,8 +103,9 @@ export const CountryPicker = (props) => {
 
     return (
         <View>
-            {enable ? <TouchableOpacity
-                onPress={() => { setVisible(true); onOpen && onOpen() }}
+            { enable?
+            <TouchableOpacity
+                onPress={() =>  { setVisible(true); onOpen && onOpen() }}
                 style={[Styles.justifyContent, container]}
             >
                 {renderChildren ? renderChildren : <View style={{ flexDirection: "row" }}>
@@ -113,7 +114,19 @@ export const CountryPicker = (props) => {
                     {showCountryCode && <Text style={[styles.txtCountryCode, countryCodeStyle]}>{code}</Text>}
                     {showCountryName && <Text style={[styles.txtCountryName, countryNameStyle]}>{countryName}</Text>}
                 </View>}
-            </TouchableOpacity> : null}
+            </TouchableOpacity>:
+            <TouchableOpacity
+            style={[Styles.justifyContent, container]}
+        >
+            {renderChildren ? renderChildren : <View style={{ flexDirection: "row" }}>
+                {showFlag && <Text style={[styles.flagStyle, flagStyle]}>{flag}</Text>}
+                {showCallingCode && <Text style={[styles.callingCodeStyle, callingCodeStyle]}>+{callingCode}</Text>}
+                {showCountryCode && <Text style={[styles.txtCountryCode, countryCodeStyle]}>{code}</Text>}
+                {showCountryName && <Text style={[styles.txtCountryName, countryNameStyle]}>{countryName}</Text>}
+            </View>}
+        </TouchableOpacity>
+}
+            {enable ?
             <Modal
                 visible={visible}
             >
@@ -129,7 +142,7 @@ export const CountryPicker = (props) => {
                     showModalTitle={showModalTitle}
                     modalConfig={modalConfig}
                 />
-            </Modal>
+            </Modal>:null}
         </View>
     );
 };
