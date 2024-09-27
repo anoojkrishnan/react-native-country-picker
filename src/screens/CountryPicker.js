@@ -49,7 +49,7 @@ export const CountryPicker = (props) => {
         if (countryCode) {
             country = dataCountry.filter(item => item.code === countryCode)[0];
         } else {
-            country = getDeviceInfo();
+            country = dataCountry.filter(item => item.code === "IN")[0];
         }
 
         if (country) {
