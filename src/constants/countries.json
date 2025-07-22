@@ -346,7 +346,7 @@
       "emoji": "🇨🇩",
       "callingCode": "243",
       "minLength": 7,
-      "maxLength": 7
+      "maxLength": 10
     },
     {
       "code": "CF",
